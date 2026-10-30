@@ -61,12 +61,6 @@ export function HeroSection({ onSceneReady }: { onSceneReady?: () => void }) {
               {h.ctaPrimary}
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </a>
-            <a
-              href="#inscripcion"
-              className="inline-flex items-center gap-2 rounded-2xl border-2 border-brand-deep/10 bg-white px-6 py-3.5 text-sm font-semibold text-brand-deep transition hover:border-brand-magenta hover:text-brand-magenta"
-            >
-              {h.ctaSecondary}
-            </a>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-brand-deep/60">

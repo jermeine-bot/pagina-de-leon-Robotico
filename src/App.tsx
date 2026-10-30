@@ -16,7 +16,7 @@ import { RegistrationForm } from '@/components/RegistrationForm'
 import { Footer } from '@/components/Footer'
 import { Preloader } from '@/components/Preloader'
 import { ScrollProgress } from '@/components/ScrollProgress'
-import { FloatingCTA } from '@/components/FloatingCTA'
+import { Announcement } from '@/components/Announcement'
 
 function useHash() {
   const [hash, setHash] = useState(() => window.location.hash)
@@ -63,7 +63,7 @@ export default function App() {
             <RegistrationForm />
           </main>
           <Footer />
-          <FloatingCTA />
+          <Announcement />
         </div>
       )}
     </CmsProvider>

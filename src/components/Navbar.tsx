@@ -51,14 +51,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:block">
-          <a
-            href="#inscripcion"
-            className="rounded-2xl bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-brand-blue/90"
-          >
-            Solicitar información
-          </a>
-        </div>
+        {/* Solicitar información button removed per request */}
 
         <button
           className="md:hidden"
@@ -94,15 +87,7 @@ export function Navbar() {
                   </a>
                 </motion.li>
               ))}
-              <motion.li initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: links.length * 0.05 }}>
-                <a
-                  href="#inscripcion"
-                  onClick={() => setOpen(false)}
-                  className="block rounded-2xl bg-brand-blue px-4 py-2.5 text-center text-sm font-semibold text-white"
-                >
-                  Solicitar información
-                </a>
-              </motion.li>
+              {/* Solicitar información button removed per request */}
             </ul>
           </motion.div>
         )}

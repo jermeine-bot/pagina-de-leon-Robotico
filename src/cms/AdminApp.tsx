@@ -4,7 +4,7 @@ import { Logo } from '@/components/Logo'
 import {
   LayoutDashboard, Home, BookOpen, Route, Image as ImageIcon, FolderKanban, Bot, Building2,
   HelpCircle, Settings, Plus, Trash2, Save, Check, Eye, Menu, X, ChevronRight, LogOut,
-  Bell, Search,
+  Bell, Search, Megaphone,
 } from 'lucide-react'
 
 // Institutional palette (admin only)
@@ -19,6 +19,7 @@ const SECTIONS = [
   { id: 'hero', label: 'Inicio / Hero', icon: Home, group: 'CONTENIDO WEB' },
   { id: 'aprender', label: 'Aprender', icon: BookOpen, group: 'CONTENIDO WEB' },
   { id: 'galeria', label: 'Galería', icon: ImageIcon, group: 'CONTENIDO WEB' },
+  { id: 'anuncio', label: 'Anuncio', icon: Megaphone, group: 'CONTENIDO WEB' },
   { id: 'proyectos', label: 'Proyectos', icon: FolderKanban, group: 'PROGRAMAS Y SERVICIOS' },
   { id: 'robots', label: 'Robots niños', icon: Bot, group: 'PROGRAMAS Y SERVICIOS' },
   { id: 'proceso', label: 'Proceso', icon: Route, group: 'PROGRAMAS Y SERVICIOS' },
@@ -248,6 +249,7 @@ export function AdminApp() {
             {active === 'aprender' && <AprenderEditor showToast={showToast} />}
             {active === 'proceso' && <ProcesoEditor showToast={showToast} />}
             {active === 'galeria' && <GaleriaEditor showToast={showToast} />}
+            {active === 'anuncio' && <AnuncioEditor showToast={showToast} />}
             {active === 'proyectos' && <ProyectosEditor showToast={showToast} />}
             {active === 'robots' && <RobotsEditor showToast={showToast} />}
             {active === 'institucional' && <InstitucionalEditor showToast={showToast} />}
@@ -610,6 +612,53 @@ function FaqEditor({ showToast }: { showToast: (m: string) => void }) {
           <Field label="Respuesta" value={f.a} onChange={(v) => { const n = [...faqs]; n[i] = { ...n[i], a: v }; setFaqs(n) }} rows={3} />
         </div>
       ))}
+    </div>
+  )
+}
+
+function AnuncioEditor({ showToast }: { showToast: (m: string) => void }) {
+  const { data, update } = useCms()
+  const items = data.announcements || []
+  const setItems = (next: typeof items) => { update({ announcements: next }); showToast('Guardado') }
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h1 className="font-display text-2xl font-bold" style={{ color: NAVY }}>Anuncios emergentes</h1>
+        <button
+          onClick={() => setItems([...items, { enabled: true, title: 'Nuevo anuncio', text: '', image: null, cta: 'Ver más', link: '#' }])}
+          className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-semibold text-white"
+          style={{ background: ACTION }}
+        >
+          <Plus className="h-4 w-4" /> Añadir anuncio
+        </button>
+      </div>
+      {items.map((a, i) => (
+        <div key={i} className="rounded-2xl bg-white border border-gray-200 p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-semibold text-gray-500">Anuncio {i + 1}</p>
+            <button onClick={() => setItems(items.filter((_, j) => j !== i))} className="text-red-600 hover:text-red-700">
+              <Trash2 className="h-4 w-4" />
+            </button>
+          </div>
+          <label className="flex items-center gap-3">
+            <input
+              type="checkbox"
+              checked={a.enabled}
+              onChange={(e) => { const n = [...items]; n[i] = { ...n[i], enabled: e.target.checked }; setItems(n) }}
+              className="h-4 w-4 rounded border-gray-300 text-[#3478E5] focus:ring-[#3478E5]"
+            />
+            <span className="text-sm font-medium" style={{ color: NAVY }}>Activar este anuncio</span>
+          </label>
+          <Field label="Título" value={a.title} onChange={(v) => { const n = [...items]; n[i] = { ...n[i], title: v }; setItems(n) }} />
+          <Field label="Texto" value={a.text} onChange={(v) => { const n = [...items]; n[i] = { ...n[i], text: v }; setItems(n) }} rows={3} />
+          <Field label="Texto del botón (CTA)" value={a.cta} onChange={(v) => { const n = [...items]; n[i] = { ...n[i], cta: v }; setItems(n) }} />
+          <Field label="Enlace del botón" value={a.link} onChange={(v) => { const n = [...items]; n[i] = { ...n[i], link: v }; setItems(n) }} />
+          <ImageField label="Imagen (opcional)" value={a.image} onChange={(v) => { const n = [...items]; n[i] = { ...n[i], image: v }; setItems(n) }} />
+        </div>
+      ))}
+      <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-4 text-xs text-gray-500">
+        Los anuncios activos aparecen como ventanas emergentes animadas. Si hay varios, se muestran uno tras otro al cerrar el anterior. El usuario puede cerrarlos y no vuelven a aparecer en esa sesión.
+      </div>
     </div>
   )
 }

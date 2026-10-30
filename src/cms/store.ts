@@ -8,6 +8,14 @@ export type CmsData = typeof siteConfig & {
   projectImages: (string | null)[]
   heroImage: string | null
   institutionalImage: string | null
+  announcements: {
+    enabled: boolean
+    title: string
+    text: string
+    image: string | null
+    cta: string
+    link: string
+  }[]
   adminUsername: string
   adminPassword: string
 }
@@ -46,6 +54,16 @@ export const DEFAULT_DATA: CmsData = {
   projectImages: [null, null, null, null, null, null],
   heroImage: null,
   institutionalImage: null,
+  announcements: [
+    {
+      enabled: true,
+      title: '¡Nueva convocatoria!',
+      text: 'Inscripciones abiertas para el Taller Municipal de Robótica. Cupos limitados.',
+      image: null,
+      cta: 'Inscribirme',
+      link: '#inscripcion',
+    },
+  ],
   adminUsername: 'admin',
   adminPassword: 'admin123$',
 }
@@ -60,6 +78,12 @@ export function loadCms(): CmsData {
       const merged = { ...DEFAULT_DATA, ...parsed } as CmsData
       if (merged.adminPassword === 'admin123') merged.adminPassword = 'admin123$'
       if (!merged.adminUsername) merged.adminUsername = 'admin'
+      // migrate old single announcement -> array
+      const anyParsed = parsed as any
+      if (anyParsed && anyParsed.announcement && !anyParsed.announcements) {
+        merged.announcements = [anyParsed.announcement]
+      }
+      if (!Array.isArray(merged.announcements)) merged.announcements = DEFAULT_DATA.announcements
       return merged
     }
   } catch (e) {
