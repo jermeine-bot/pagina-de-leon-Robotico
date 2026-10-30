@@ -51,6 +51,7 @@ src/
 - Paleta: azul eléctrico `#2563EB`, cian `#37C8E8`, amarillo `#FFD500`, magenta `#E83E99`, blanco cálido `#FAFAF7`, grafito `#202638`.
 - Responsive, accesible (`prefers-reduced-motion`, foco visible, contraste).
 - Preloader personalizado "León Robótico" con progreso y confeti.
+- Anuncio emergente (modal animado) editable y activable desde el CMS.
 - Barra de progreso de scroll y botón flotante "Inscribirme".
 
 ### Panel admin (CMS)
