@@ -104,7 +104,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
     const fill = fillRef.current
     if (!big || !msg || !pct || !fill) return
 
-    letters(big, 'León Robótico')
+    letters(big, 'Leoncito Robótico')
 
     let raf = 0
     const t0 = performance.now()
@@ -138,7 +138,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
       <div ref={rootRef} className="preloader-root" role="status" aria-live="polite">
         <h1 className="hello">
           <small>Bienvenido a</small>
-          <span className="big" ref={bigRef} aria-label="León Robótico"></span>
+          <span className="big" ref={bigRef} aria-label="Leoncito Robótico"></span>
         </h1>
         <div className="scene">
           <span className="gear" style={{ left: '8%', top: '18px' }}>⚙</span>

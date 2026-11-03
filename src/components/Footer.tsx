@@ -1,5 +1,5 @@
 import { useCms } from '@/cms/CmsContext'
-import { Facebook, Instagram, Youtube, Mail, Sparkles, MapPin } from 'lucide-react'
+import { Facebook, Instagram, Youtube, Sparkles, MapPin, Phone } from 'lucide-react'
 import { Logo } from './Logo'
 
 export function Footer() {
@@ -53,20 +53,30 @@ export function Footer() {
             <h4 className="font-display font-semibold text-brand-yellow">Contacto</h4>
             <ul className="mt-4 space-y-3 text-sm text-white/70">
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-brand-cyan" /> Contacto institucional por confirmar
+                <Phone className="h-4 w-4 text-brand-cyan shrink-0" />
+                <a 
+                  href="https://api.whatsapp.com/send?phone=50581073392" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="transition hover:text-brand-cyan"
+                >
+                  +505 81073392
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 text-brand-cyan shrink-0 mt-0.5" />
+                <span>De donde fue Asados Pelibuey 1/2 cda. hacia abajo, León, Nicaragua</span>
               </li>
               <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-brand-cyan" /> {data.municipality}
-              </li>
-              <li className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-brand-cyan" /> Programa educativo STEM
+                <Sparkles className="h-4 w-4 text-brand-cyan shrink-0" /> 
+                <span>Programa educativo Alcaldía de León</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row">
-          <p>© {new Date().getFullYear()} {data.municipality}. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} {data.municipality || 'León'}. Todos los derechos reservados.</p>
           <p>Aviso de privacidad · Créditos institucionales</p>
         </div>
       </div>

@@ -34,12 +34,12 @@ export const siteConfig = {
     { title: 'Desafíos de programación por equipos', level: 'Avanzado', desc: 'Trabajo colaborativo y algoritmos.' },
   ],
   faqs: [
-    { q: '¿Qué es un taller de robótica educativa?', a: 'Es un espacio donde los niños aprenden ciencia y tecnología construyendo y programando robots con materiales como LEGO y Sparki.' },
+    { q: '¿Qué es un taller de robótica educativa?', a: 'Es un espacio donde los niños aprenden robótica, programación y tecnología de forma divertida, construyendo robots y desarrollando su creatividad, lógica y trabajo en equipo.' },
     { q: '¿Los niños necesitan conocimientos previos?', a: 'No. El taller está pensado para iniciar desde cero y avanzar según la edad y el ritmo de cada estudiante.' },
-    { q: '¿Qué aprenderán utilizando LEGO y Sparki?', a: 'Construcción, mecanismos, sensores, secuencias, algoritmos básicos y trabajo en equipo.' },
-    { q: '¿Qué edades pueden participar?', a: 'Las edades oficiales se confirmarán con la Alcaldía. Por favor consulta directamente con el programa.' },
-    { q: '¿Cómo puedo solicitar información sobre las inscripciones?', a: 'Completa el formulario de esta página o contacta a la Alcaldía a través de sus canales oficiales.' },
-    { q: '¿Dónde se encuentra el taller?', a: 'La ubicación oficial se confirmará con la Alcaldía. Consulta los canales institucionales.' },
+    { q: '¿Qué aprenderán utilizando LEGO y Sparki?', a: '- Fundamentos de Robótica, Diseño y Construcción de Robots Funcionales, Programación aplicada a proyectos Reales, Materiales proporcionados, Pensamiento Lógico, Creatividad, Innovación y Trabajo en Equipo, Certificados de participación' },
+    { q: '¿Qué edades pueden participar?', a: 'Entre 7 a 14 años de edad, grados primaria 4to, 5to,6to secundaria 7mo y 8vo' },
+    { q: '¿Cómo puedo solicitar información sobre las inscripciones?', a: 'Puedes consultar la página oficial de Facebook de la Alcaldía Municipal de León, donde se publican las fechas de inscripción, requisitos y novedades del taller Leoncito Robótico. También puedes solicitar información directamente con el responsable del taller.' },
+    { q: '¿Dónde se encuentra el taller?', a: 'Donde fue asados pelibuey 1/2 hacia abajo' },
   ],
   // Provisional contact placeholders (not official). Remove/replace when confirmed.
   contact: {
