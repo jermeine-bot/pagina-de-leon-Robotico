@@ -13,8 +13,6 @@ const levelStyle: Record<string, string> = {
 export function ProjectsSection() {
   const { data } = useCms()
   const projects = data.projects
-  const techs = data.projectsTechs
-  const images = data.projectImages
   return (
     <section id="proyectos" className="section relative overflow-hidden">
       <div className="absolute inset-0 -z-10" style={{ background: 'linear-gradient(180deg, #F5F8FC 0%, #FAFAF7 100%)' }} />
@@ -41,9 +39,9 @@ export function ProjectsSection() {
                 transition={{ duration: 0.4, delay: i * 0.06 }}
                 className={`group relative overflow-hidden rounded-3xl border-2 ${levelStyle[p.level] ?? ''} bg-white transition hover:-translate-y-1 hover:shadow-soft`}
               >
-                {images[i] && (
+                {p.image && (
                   <div className="h-36 overflow-hidden">
-                    <img src={images[i]!} alt={p.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                    <img src={p.image} alt={p.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
                   </div>
                 )}
                 <div className="p-6">
@@ -58,7 +56,7 @@ export function ProjectsSection() {
                 <h3 className="mt-4 font-display text-lg font-bold text-brand-deep">{p.title}</h3>
                 <p className="mt-2 text-sm text-brand-deep/70">{p.desc}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {(techs[i] || []).map((t) => (
+                  {p.techs.map((t) => (
                     <span key={t} className="rounded-full bg-brand-gray px-2.5 py-1 text-xs font-medium text-brand-deep/70">
                       {t}
                     </span>

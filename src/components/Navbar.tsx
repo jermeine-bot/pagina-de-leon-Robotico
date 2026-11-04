@@ -13,7 +13,7 @@ const links = [
 ]
 
 export function Navbar() {
-  const { data } = useCms() as { data: any }
+  const { data } = useCms()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -41,7 +41,7 @@ export function Navbar() {
             alt="Logo" 
             className="h-11 w-11 rounded-xl object-cover border border-brand-deep/10 shadow-sm" 
           />
-          <span className="hidden sm:inline">{data?.programName}</span>
+          <span className="hidden sm:inline">{data.settings.programName}</span>
         </a>
 
         <ul className="hidden items-center gap-6 md:flex">

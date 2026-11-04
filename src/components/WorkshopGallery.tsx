@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Camera, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useCms } from '@/cms/CmsContext'
+import { GRADIENTS, type GradientKey } from '@/cms/types'
+
+const gradientClass = (key: GradientKey) => GRADIENTS[key] ?? GRADIENTS['blue-cyan']
 
 export function WorkshopGallery() {
   const { data } = useCms()
@@ -42,7 +45,7 @@ export function WorkshopGallery() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${it.color} ${
+              className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${gradientClass(it.gradient)} ${
                 i % 3 === 0 ? 'row-span-2' : i % 2 === 0 ? 'col-span-2' : ''
               }`}
             >
@@ -92,7 +95,7 @@ export function WorkshopGallery() {
               {items[active].image ? (
                 <img src={items[active].image!} alt={items[active].label} className="h-full w-full object-contain" />
               ) : (
-                <div className={`flex h-full flex-col items-center justify-center gap-3 bg-gradient-to-br ${items[active].color} text-white`}>
+                <div className={`flex h-full flex-col items-center justify-center gap-3 bg-gradient-to-br ${gradientClass(items[active].gradient)} text-white`}>
                   <Camera className="h-10 w-10 opacity-80" />
                   <p className="text-xl font-bold">{items[active].label}</p>
                   <span className="text-sm opacity-70">Foto próximamente</span>

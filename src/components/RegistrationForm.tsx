@@ -3,6 +3,7 @@ import { motion } from 'motion/react'
 import { CheckCircle2, Send } from 'lucide-react'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
+import { useCms } from '@/cms/CmsContext'
 
 type FormState = {
   tutor: string
@@ -19,6 +20,9 @@ type FormState = {
 type Errors = Partial<Record<keyof FormState, string>>
 
 export function RegistrationForm() {
+  const { data: cms } = useCms()
+  const whatsapp = cms.contact.whatsapp ?? '50581073392'
+
   const [form, setForm] = useState<FormState>({
     tutor: '',
     participant: '',
@@ -83,7 +87,7 @@ export function RegistrationForm() {
     doc.save(fileName)
 
     // Formatear mensaje para WhatsApp con los nuevos datos
-    const phone = '50581073392'
+    const phone = whatsapp
     const textMessage = 
 `*NUEVA SOLICITUD DE INSCRIPCIÓN* 📄
 
@@ -142,7 +146,7 @@ _(El comprobante PDF se ha descargado en mi dispositivo y lo adjunto a continuac
             <CheckCircle2 className="mx-auto h-12 w-12 text-brand-magenta" />
             <h2 className="mt-4 font-display text-2xl font-bold text-brand-deep">Solicitud lista para WhatsApp</h2>
             <p className="mt-3 text-brand-deep/70">
-              Se ha generado y descargado el archivo PDF en tu equipo, y se ha abierto WhatsApp para enviar los datos al +505 81073392.
+              Se ha generado y descargado el archivo PDF en tu equipo, y se ha abierto WhatsApp para enviar los datos al +{whatsapp}.
             </p>
             <button
               onClick={() => { 

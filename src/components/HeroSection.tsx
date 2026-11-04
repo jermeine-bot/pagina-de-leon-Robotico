@@ -4,9 +4,45 @@ import { useCms } from '@/cms/CmsContext'
 import { lazy, Suspense } from 'react'
 const LegoRobot3D = lazy(() => import('./LegoRobot3D').then((m) => ({ default: m.LegoRobot3D })))
 
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+function renderTitle(title: string, highlight: string, accent: string) {
+  const marks = [highlight, accent].filter((mark) => mark !== '' && title.includes(mark))
+
+  if (marks.length === 0) {
+    return title
+  }
+
+  const pattern = new RegExp(`(${marks.map(escapeRegExp).join('|')})`, 'g')
+
+  return title.split(pattern).map((part, index) => {
+    if (part === highlight) {
+      return (
+        <span key={index} className="relative inline-block text-brand-blue">
+          {part}
+          <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 14" fill="none">
+            <path d="M2 9 Q50 2 100 9 T198 9" stroke="#FFD500" strokeWidth="5" strokeLinecap="round" />
+          </svg>
+        </span>
+      )
+    }
+
+    if (part === accent) {
+      return (
+        <span key={index} className="text-brand-magenta">
+          {part}
+        </span>
+      )
+    }
+
+    return <span key={index}>{part}</span>
+  })
+}
+
 export function HeroSection({ onSceneReady }: { onSceneReady?: () => void }) {
   const { data } = useCms()
   const h = data.hero
+
   return (
     <section id="hero" className="relative overflow-hidden pt-24 sm:pt-28 pb-10">
       {/* playful background */}
@@ -42,14 +78,7 @@ export function HeroSection({ onSceneReady }: { onSceneReady?: () => void }) {
             {h.eyebrow}
           </span>
           <h1 className="mt-5 font-display text-5xl font-extrabold leading-[0.98] tracking-tight text-brand-deep sm:text-6xl lg:text-7xl">
-            El futuro{' '}
-            <span className="relative inline-block text-brand-blue">
-              se construye
-              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 14" fill="none">
-                <path d="M2 9 Q50 2 100 9 T198 9" stroke="#FFD500" strokeWidth="5" strokeLinecap="round" />
-              </svg>
-            </span>{' '}
-            <span className="text-brand-magenta">jugando</span>
+            {renderTitle(h.title, h.highlight, h.accent)}
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-deep/70">{h.subtitle}</p>
 
@@ -61,6 +90,14 @@ export function HeroSection({ onSceneReady }: { onSceneReady?: () => void }) {
               {h.ctaPrimary}
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </a>
+            {h.ctaSecondary && (
+              <a
+                href="#inscripcion"
+                className="inline-flex items-center gap-2 rounded-2xl border-2 border-brand-deep/10 bg-white px-6 py-3.5 text-sm font-semibold text-brand-deep transition hover:border-brand-magenta hover:text-brand-magenta"
+              >
+                {h.ctaSecondary}
+              </a>
+            )}
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-brand-deep/60">
@@ -75,8 +112,8 @@ export function HeroSection({ onSceneReady }: { onSceneReady?: () => void }) {
         </motion.div>
 
         <div className="relative h-[380px] sm:h-[460px] lg:h-[560px] rounded-3xl overflow-hidden">
-          {data.heroImage && (
-            <img src={data.heroImage} alt="Hero" className="absolute inset-0 h-full w-full object-cover opacity-30" />
+          {h.image && (
+            <img src={h.image} alt="Hero" className="absolute inset-0 h-full w-full object-cover opacity-30" />
           )}
           <Suspense fallback={<div className="flex h-full items-center justify-center text-brand-deep/40">Cargando modelo 3D…</div>}>
             <LegoRobot3D onReady={onSceneReady} />

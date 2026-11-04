@@ -2,8 +2,13 @@ import { useCms } from '@/cms/CmsContext'
 import { Facebook, Instagram, Youtube, Sparkles, MapPin, Phone } from 'lucide-react'
 
 export function Footer() {
-  const { data } = useCms() as { data: any }
-  
+  const { data } = useCms()
+  const { settings, contact } = data
+  const whatsapp = contact.whatsapp ?? '50581073392'
+  const phoneLabel = contact.phone ?? `+${whatsapp}`
+  const address = contact.address ?? 'León, Nicaragua'
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsapp}`
+
   const navLinks = ['#aprender', '#proceso', '#galeria', '#proyectos', '#institucional', '#faq', '#inscripcion']
 
   return (
@@ -27,8 +32,8 @@ export function Footer() {
                 className="h-20 w-20 rounded-2xl object-cover shadow-md border border-white/10" 
               />
             </div>
-            <h3 className="mt-3 font-display text-xl font-bold text-white">{data?.programName}</h3>
-            <p className="text-xs text-brand-cyan font-medium mt-0.5">{data?.tagline}</p>
+            <h3 className="mt-3 font-display text-xl font-bold text-white">{settings.programName}</h3>
+            <p className="text-xs text-brand-cyan font-medium mt-0.5">{settings.tagline}</p>
             <p className="mt-3 text-xs text-white/70 max-w-xs leading-relaxed">
               Un espacio donde las ideas cobran vida con LEGO y Sparki. Educación tecnológica para la niñez.
             </p>
@@ -57,23 +62,23 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-wider text-brand-yellow text-center">Contacto directo</p>
             <div className="space-y-2.5 text-xs text-white/80">
               <a 
-                href="https://api.whatsapp.com/send?phone=50581073392" 
+                href={whatsappUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center gap-3 rounded-xl bg-white/5 p-2.5 transition active:bg-white/10"
               >
                 <Phone className="h-4 w-4 text-brand-cyan shrink-0" />
-                <span className="font-medium">+505 81073392</span>
+                <span className="font-medium">{phoneLabel}</span>
               </a>
 
               <div className="flex items-start gap-3 rounded-xl bg-white/5 p-2.5">
                 <MapPin className="h-4 w-4 text-brand-cyan shrink-0 mt-0.5" />
-                <span>De donde fue Asados Pelibuey 1/2 cda. abajo, León, Nicaragua</span>
+                <span>{address}</span>
               </div>
 
               <div className="flex items-center gap-3 rounded-xl bg-white/5 p-2.5">
                 <Sparkles className="h-4 w-4 text-brand-cyan shrink-0" />
-                <span>Programa educativo Alcaldía de León</span>
+                <span>Programa educativo {settings.municipality}</span>
               </div>
             </div>
           </div>
@@ -109,8 +114,8 @@ export function Footer() {
                 className="h-20 w-20 rounded-xl object-cover border border-white/10" 
               />
               <div>
-                <p className="font-display text-lg font-bold">{data?.programName}</p>
-                <p className="text-sm text-white/60">{data?.tagline}</p>
+                <p className="font-display text-lg font-bold">{settings.programName}</p>
+                <p className="text-sm text-white/60">{settings.tagline}</p>
               </div>
             </div>
             <p className="mt-4 max-w-md text-sm text-white/70">
@@ -149,21 +154,21 @@ export function Footer() {
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-brand-cyan shrink-0" />
                 <a 
-                  href="https://api.whatsapp.com/send?phone=50581073392" 
+                  href={whatsappUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="transition hover:text-brand-cyan"
                 >
-                  +505 81073392
+                  {phoneLabel}
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-brand-cyan shrink-0 mt-0.5" />
-                <span>De donde fue Asados Pelibuey 1/2 cda. hacia abajo, León, Nicaragua</span>
+                <span>{address}</span>
               </li>
               <li className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-brand-cyan shrink-0" /> 
-                <span>Programa educativo Alcaldía de León</span>
+                <span>Programa educativo {settings.municipality}</span>
               </li>
             </ul>
           </div>
@@ -171,7 +176,7 @@ export function Footer() {
 
         {/* Pie inferior con derechos y políticas */}
         <div className="mt-10 md:mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-center text-xs text-white/50 sm:flex-row">
-          <p>© {new Date().getFullYear()} {data?.municipality || 'León'}. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} {settings.municipality}. Todos los derechos reservados.</p>
           <p>Aviso de privacidad · Créditos institucionales</p>
         </div>
       </div>

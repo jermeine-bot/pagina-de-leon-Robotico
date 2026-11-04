@@ -6,3 +6,11 @@ dist/
 *.tsbuildinfo
 .DS_Store
 .vscode/
+
+# Backend
+backend/.env
+backend/uploads/*
+!backend/uploads/.htaccess
+backend/storage/logs/*
+!backend/storage/logs/.gitkeep
+backend/storage/*.log

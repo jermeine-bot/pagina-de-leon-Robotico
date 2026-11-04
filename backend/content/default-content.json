@@ -1,0 +1,92 @@
+{
+  "settings": {
+    "programName": "Taller Municipal de Robótica",
+    "municipality": "Alcaldía de León",
+    "tagline": "Pequeños inventores, grandes ideas"
+  },
+  "hero": {
+    "eyebrow": "INNOVACIÓN · EDUCACIÓN · FUTURO",
+    "title": "El futuro se construye jugando",
+    "highlight": "se construye",
+    "accent": "jugando",
+    "subtitle": "Un espacio donde las ideas cobran vida. Los niños descubren la robótica, aprenden a programar y construyen sus propios inventos con LEGO y Sparki.",
+    "badge": "Aprender, construir y experimentar",
+    "ctaPrimary": "Conoce nuestro taller",
+    "ctaSecondary": "Quiero inscribirme",
+    "image": null
+  },
+  "intro": {
+    "title": "Mucho más que jugar. Aprender creando",
+    "text": "Los niños desarrollan pensamiento lógico, creatividad, resolución de problemas y trabajo en equipo mediante experiencias prácticas con piezas, sensores y programación."
+  },
+  "journey": [
+    { "step": "01", "title": "IMAGINAR", "text": "Los niños identifican un reto y proponen ideas." },
+    { "step": "02", "title": "CONSTRUIR", "text": "Utilizan piezas, estructuras y componentes para crear sus modelos." },
+    { "step": "03", "title": "PROGRAMAR", "text": "Aprenden a controlar movimientos y comportamientos." },
+    { "step": "04", "title": "EXPERIMENTAR", "text": "Prueban, detectan errores y mejoran sus creaciones." },
+    { "step": "05", "title": "COMPARTIR", "text": "Presentan sus inventos y aprenden a colaborar." }
+  ],
+  "learningCards": [
+    { "title": "Construcción con LEGO", "text": "Los estudiantes construyen modelos, exploran mecanismos y descubren cómo transformar sus ideas en objetos funcionales." },
+    { "title": "Programación y lógica", "text": "Aprenden a dar instrucciones, comprender secuencias, experimentar con algoritmos y resolver pequeños desafíos." },
+    { "title": "Robótica con Sparki", "text": "Experimentan con sensores, movimiento y programación para comprender cómo un robot percibe su entorno y ejecuta instrucciones." }
+  ],
+  "gallery": [
+    { "label": "Estudiantes trabajando en equipo", "gradient": "blue-cyan", "image": null },
+    { "label": "Kits LEGO Education", "gradient": "yellow-magenta", "image": null },
+    { "label": "Robot Sparki en acción", "gradient": "cyan-blue", "image": null },
+    { "label": "Actividades educativas", "gradient": "magenta-yellow", "image": null },
+    { "label": "Proyectos construidos", "gradient": "blue-magenta", "image": null },
+    { "label": "Sesión de programación", "gradient": "yellow-cyan", "image": null }
+  ],
+  "projects": [
+    { "title": "Robot que detecta obstáculos", "level": "Básico", "desc": "Uso de sensores para evitar choques.", "techs": ["Sensores", "Movimiento"], "image": null },
+    { "title": "Vehículo construido con LEGO", "level": "Básico", "desc": "Mecanismos y tracción.", "techs": ["Mecanismos", "Tracción"], "image": null },
+    { "title": "Sistema de sensores", "level": "Intermedio", "desc": "Lectura del entorno.", "techs": ["Sensores", "Lectura"], "image": null },
+    { "title": "Robot que sigue una ruta", "level": "Intermedio", "desc": "Secuencias y control de movimiento.", "techs": ["Secuencias", "Control"], "image": null },
+    { "title": "Mecanismos y estructuras móviles", "level": "Intermedio", "desc": "Engranajes y palancas.", "techs": ["Engranajes", "Palancas"], "image": null },
+    { "title": "Desafíos de programación por equipos", "level": "Avanzado", "desc": "Trabajo colaborativo y algoritmos.", "techs": ["Algoritmos", "Trabajo en equipo"], "image": null }
+  ],
+  "kidsRobots": [
+    { "name": "Robot Explorador", "desc": "Avanza, detecta obstáculos y cambia de dirección automáticamente.", "level": "Básico", "image": null },
+    { "name": "Brazo Selector", "desc": "Recoge objetos pequeños y los clasifica por color.", "level": "Intermedio", "image": null },
+    { "name": "Vehículo Seguidor", "desc": "Sigue una línea en el suelo usando sensores de luz.", "level": "Intermedio", "image": null },
+    { "name": "Alarma Creativa", "desc": "Detecta movimiento y avisa con luz y sonido.", "level": "Básico", "image": null },
+    { "name": "Robot Bailarín", "desc": "Ejecuta secuencias de movimiento al ritmo de una melodía.", "level": "Avanzado", "image": null },
+    { "name": "Máquina Clasificadora", "desc": "Separa piezas por tamaño usando sensores y motores.", "level": "Avanzado", "image": null }
+  ],
+  "institutional": {
+    "heading": "Invertimos en ideas que construyen el futuro",
+    "text": "El taller es una iniciativa educativa de la Alcaldía de León para acercar a los niños a la ciencia, la tecnología, la ingeniería y las matemáticas mediante experiencias educativas accesibles y prácticas.",
+    "image": null,
+    "partners": [
+      { "name": "Alcaldía de León", "logo": "/leon2d.png" },
+      { "name": "UNAN-León", "logo": "/unan.png" },
+      { "name": "MINED", "logo": "/mined.png" }
+    ]
+  },
+  "faqs": [
+    { "q": "¿Qué es un taller de robótica educativa?", "a": "Es un espacio donde los niños aprenden robótica, programación y tecnología de forma divertida, construyendo robots y desarrollando su creatividad, lógica y trabajo en equipo." },
+    { "q": "¿Los niños necesitan conocimientos previos?", "a": "No. El taller está pensado para iniciar desde cero y avanzar según la edad y el ritmo de cada estudiante." },
+    { "q": "¿Qué aprenderán utilizando LEGO y Sparki?", "a": "Fundamentos de robótica, diseño y construcción de robots funcionales, programación aplicada a proyectos reales, pensamiento lógico, creatividad, innovación y trabajo en equipo. Incluye materiales y certificado de participación." },
+    { "q": "¿Qué edades pueden participar?", "a": "Entre 7 y 14 años: grados de 4to a 6to de primaria y 7mo y 8vo de secundaria." },
+    { "q": "¿Cómo puedo solicitar información sobre las inscripciones?", "a": "Puedes consultar la página oficial de Facebook de la Alcaldía Municipal de León, donde se publican las fechas de inscripción, requisitos y novedades del taller Leoncito Robótico. También puedes solicitar información directamente con el responsable del taller." },
+    { "q": "¿Dónde se encuentra el taller?", "a": "De donde fue Asados Pelibuey 1/2 cuadra abajo, León, Nicaragua." }
+  ],
+  "contact": {
+    "email": null,
+    "phone": "+505 8107 3392",
+    "whatsapp": "50581073392",
+    "address": "De donde fue Asados Pelibuey 1/2 cuadra abajo, León, Nicaragua"
+  },
+  "announcements": [
+    {
+      "enabled": true,
+      "title": "¡Nueva convocatoria!",
+      "text": "Inscripciones abiertas para el Taller Municipal de Robótica. Cupos limitados.",
+      "image": null,
+      "cta": "Inscribirme",
+      "link": "#inscripcion"
+    }
+  ]
+}
