@@ -12,6 +12,7 @@ final class ContentValidator
 {
     private const LEVELS = ['Básico', 'Intermedio', 'Avanzado'];
     private const GRADIENTS = ['blue-cyan', 'yellow-magenta', 'cyan-blue', 'magenta-yellow', 'blue-magenta', 'yellow-cyan'];
+    private const LIST_SECTIONS = ['journey', 'learningCards', 'gallery', 'projects', 'kidsRobots', 'faqs', 'announcements'];
 
     /** @var array<string, string> */
     private array $errors = [];
@@ -19,8 +20,12 @@ final class ContentValidator
     /** @return array<string, mixed> */
     public function validate(string $section, mixed $content): array
     {
-        if (!is_array($content) || array_is_list($content)) {
-            throw new ValidationException(['content' => 'El contenido debe ser un objeto.']);
+        $isList = in_array($section, self::LIST_SECTIONS, true);
+
+        if (!is_array($content) || array_is_list($content) !== $isList) {
+            throw new ValidationException([
+                'content' => $isList ? 'El contenido debe ser una lista.' : 'El contenido debe ser un objeto.',
+            ]);
         }
 
         $this->errors = [];
@@ -76,7 +81,7 @@ final class ContentValidator
     /** @param array<string, mixed> $c */
     private function validateJourney(array $c): array
     {
-        return $this->list($c, 'journey', 'journey', 12, fn (array $item, int $i): array => [
+        return $this->items($c, 'journey', 12, fn (array $item, int $i): array => [
             'step' => $this->text($item, "journey.{$i}.step", 'step', 8),
             'title' => $this->text($item, "journey.{$i}.title", 'title', 80),
             'text' => $this->text($item, "journey.{$i}.text", 'text', 400),
@@ -86,7 +91,7 @@ final class ContentValidator
     /** @param array<string, mixed> $c */
     private function validateLearningCards(array $c): array
     {
-        return $this->list($c, 'learningCards', 'learningCards', 12, fn (array $item, int $i): array => [
+        return $this->items($c, 'learningCards', 12, fn (array $item, int $i): array => [
             'title' => $this->text($item, "learningCards.{$i}.title", 'title', 120),
             'text' => $this->text($item, "learningCards.{$i}.text", 'text', 600),
         ]);
@@ -95,7 +100,7 @@ final class ContentValidator
     /** @param array<string, mixed> $c */
     private function validateGallery(array $c): array
     {
-        return $this->list($c, 'gallery', 'gallery', 30, fn (array $item, int $i): array => [
+        return $this->items($c, 'gallery', 30, fn (array $item, int $i): array => [
             'label' => $this->text($item, "gallery.{$i}.label", 'label', 160),
             'gradient' => $this->enum($item, "gallery.{$i}.gradient", 'gradient', self::GRADIENTS),
             'image' => $this->image($item, "gallery.{$i}.image", 'image'),
@@ -103,9 +108,25 @@ final class ContentValidator
     }
 
     /** @param array<string, mixed> $c */
+    private function validateMoments(array $c): array
+    {
+        return [
+            'eyebrow' => $this->text($c, 'moments.eyebrow', 'eyebrow', 120),
+            'title' => $this->text($c, 'moments.title', 'title', 160),
+            'text' => $this->text($c, 'moments.text', 'text', 1200),
+            'slides' => $this->list($c, 'moments.slides', 'slides', 30, fn (array $item, int $i): array => [
+                'tag' => $this->text($item, "moments.slides.{$i}.tag", 'tag', 80),
+                'label' => $this->text($item, "moments.slides.{$i}.label", 'label', 160),
+                'gradient' => $this->enum($item, "moments.slides.{$i}.gradient", 'gradient', self::GRADIENTS),
+                'image' => $this->image($item, "moments.slides.{$i}.image", 'image'),
+            ]),
+        ];
+    }
+
+    /** @param array<string, mixed> $c */
     private function validateProjects(array $c): array
     {
-        return $this->list($c, 'projects', 'projects', 30, function (array $item, int $i): array {
+        return $this->items($c, 'projects', 30, function (array $item, int $i): array {
             $techs = $item['techs'] ?? [];
             $cleanTechs = [];
             if (!is_array($techs) || !array_is_list($techs) || count($techs) > 10) {
@@ -135,7 +156,7 @@ final class ContentValidator
     /** @param array<string, mixed> $c */
     private function validateKidsRobots(array $c): array
     {
-        return $this->list($c, 'kidsRobots', 'kidsRobots', 30, fn (array $item, int $i): array => [
+        return $this->items($c, 'kidsRobots', 30, fn (array $item, int $i): array => [
             'name' => $this->text($item, "kidsRobots.{$i}.name", 'name', 120),
             'desc' => $this->text($item, "kidsRobots.{$i}.desc", 'desc', 600, false),
             'level' => $this->enum($item, "kidsRobots.{$i}.level", 'level', self::LEVELS),
@@ -160,7 +181,7 @@ final class ContentValidator
     /** @param array<string, mixed> $c */
     private function validateFaqs(array $c): array
     {
-        return $this->list($c, 'faqs', 'faqs', 50, fn (array $item, int $i): array => [
+        return $this->items($c, 'faqs', 50, fn (array $item, int $i): array => [
             'q' => $this->text($item, "faqs.{$i}.q", 'q', 300),
             'a' => $this->text($item, "faqs.{$i}.a", 'a', 2000),
         ]);
@@ -180,7 +201,7 @@ final class ContentValidator
     /** @param array<string, mixed> $c */
     private function validateAnnouncements(array $c): array
     {
-        return $this->list($c, 'announcements', 'announcements', 10, fn (array $item, int $i): array => [
+        return $this->items($c, 'announcements', 10, fn (array $item, int $i): array => [
             'enabled' => $this->bool($item, "announcements.{$i}.enabled", 'enabled'),
             'title' => $this->text($item, "announcements.{$i}.title", 'title', 160),
             'text' => $this->text($item, "announcements.{$i}.text", 'text', 600),
@@ -308,6 +329,17 @@ final class ContentValidator
 
             return [];
         }
+
+        return $this->items($items, $path, $max, $mapper);
+    }
+
+    /**
+     * @param list<mixed> $items
+     * @param callable(array<string, mixed>, int): array<string, mixed> $mapper
+     * @return list<array<string, mixed>>
+     */
+    private function items(array $items, string $path, int $max, callable $mapper): array
+    {
         if (count($items) > $max) {
             $this->errors[$path] = "Máximo {$max} elementos.";
 

@@ -16,6 +16,7 @@ export const LEVELS: Level[] = ['Básico', 'Intermedio', 'Avanzado']
 export type JourneyStep = { step: string; title: string; text: string }
 export type LearningCard = { title: string; text: string }
 export type GalleryItem = { label: string; gradient: GradientKey; image: string | null }
+export type MomentSlide = { tag: string; label: string; gradient: GradientKey; image: string | null }
 export type Project = { title: string; level: Level; desc: string; techs: string[]; image: string | null }
 export type KidRobot = { name: string; desc: string; level: Level; image: string | null }
 export type Partner = { name: string; logo: string | null }
@@ -47,6 +48,7 @@ export type CmsData = {
   journey: JourneyStep[]
   learningCards: LearningCard[]
   gallery: GalleryItem[]
+  moments: { eyebrow: string; title: string; text: string; slides: MomentSlide[] }
   projects: Project[]
   kidsRobots: KidRobot[]
   institutional: { heading: string; text: string; image: string | null; partners: Partner[] }

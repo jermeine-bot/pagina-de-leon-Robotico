@@ -36,7 +36,8 @@ export function useSectionEditor<K extends SectionKey>(section: K, options: Opti
       options.onSaved?.('Cambios guardados')
     } catch (caught) {
       if (caught instanceof ApiError) {
-        setError(caught.message)
+        const details = [...new Set(Object.values(caught.errors))]
+        setError(details.length > 0 ? `${caught.message} ${details.join(' ')}` : caught.message)
         setConflict(caught.status === 409)
       } else {
         setError('No se pudo guardar. Revisa tu conexión.')

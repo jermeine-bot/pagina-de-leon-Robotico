@@ -4,6 +4,7 @@ import {
   BookOpen,
   Bot,
   Building2,
+  Camera,
   ChevronRight,
   Eye,
   FolderKanban,
@@ -29,6 +30,7 @@ import { HeroEditor } from './editors/HeroEditor'
 import { AprenderEditor } from './editors/AprenderEditor'
 import { ProcesoEditor } from './editors/ProcesoEditor'
 import { GaleriaEditor } from './editors/GaleriaEditor'
+import { MomentosEditor } from './editors/MomentosEditor'
 import { ProyectosEditor } from './editors/ProyectosEditor'
 import { RobotsEditor } from './editors/RobotsEditor'
 import { InstitucionalEditor } from './editors/InstitucionalEditor'
@@ -40,6 +42,7 @@ const SECTIONS = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, group: 'PRINCIPAL' },
   { id: 'hero', label: 'Inicio / Hero', icon: Home, group: 'CONTENIDO WEB' },
   { id: 'aprender', label: 'Aprender', icon: BookOpen, group: 'CONTENIDO WEB' },
+  { id: 'momentos', label: 'Momentos', icon: Camera, group: 'CONTENIDO WEB' },
   { id: 'galeria', label: 'Galería', icon: ImageIcon, group: 'CONTENIDO WEB' },
   { id: 'anuncio', label: 'Anuncio', icon: Megaphone, group: 'CONTENIDO WEB' },
   { id: 'proyectos', label: 'Proyectos', icon: FolderKanban, group: 'PROGRAMAS Y SERVICIOS' },
@@ -279,6 +282,7 @@ export function AdminApp() {
             {active === 'general' && <GeneralEditor showToast={showToast} />}
             {active === 'hero' && <HeroEditor showToast={showToast} />}
             {active === 'aprender' && <AprenderEditor showToast={showToast} />}
+            {active === 'momentos' && <MomentosEditor showToast={showToast} />}
             {active === 'proceso' && <ProcesoEditor showToast={showToast} />}
             {active === 'galeria' && <GaleriaEditor showToast={showToast} />}
             {active === 'anuncio' && <AnuncioEditor showToast={showToast} />}

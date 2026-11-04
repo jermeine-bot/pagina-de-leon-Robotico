@@ -39,6 +39,18 @@
     { "label": "Proyectos construidos", "gradient": "blue-magenta", "image": null },
     { "label": "Sesión de programación", "gradient": "yellow-cyan", "image": null }
   ],
+  "moments": {
+    "eyebrow": "Momentos",
+    "title": "Niños creando robots",
+    "text": "Imágenes del taller se añadirán aquí. Por ahora, una vista previa de las actividades que vivirán los estudiantes.",
+    "slides": [
+      { "tag": "Construcción", "label": "Niños construyendo su primer robot", "gradient": "blue-cyan", "image": null },
+      { "tag": "Programación", "label": "Programando movimientos con bloques", "gradient": "magenta-yellow", "image": null },
+      { "tag": "Experimentación", "label": "Probando sensores en equipo", "gradient": "cyan-blue", "image": null },
+      { "tag": "Creatividad", "label": "Presentando su invento final", "gradient": "yellow-cyan", "image": null },
+      { "tag": "Descubrimiento", "label": "Descubriendo cómo funciona un robot", "gradient": "blue-magenta", "image": null }
+    ]
+  },
   "projects": [
     { "title": "Robot que detecta obstáculos", "level": "Básico", "desc": "Uso de sensores para evitar choques.", "techs": ["Sensores", "Movimiento"], "image": null },
     { "title": "Vehículo construido con LEGO", "level": "Básico", "desc": "Mecanismos y tracción.", "techs": ["Mecanismos", "Tracción"], "image": null },

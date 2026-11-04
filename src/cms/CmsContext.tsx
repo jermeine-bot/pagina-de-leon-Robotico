@@ -34,7 +34,15 @@ type Ctx = {
 const CmsContext = createContext<Ctx | null>(null)
 
 function mergeData(data: Partial<CmsData>): CmsData {
-  return { ...DEFAULT_DATA, ...data }
+  return {
+    ...DEFAULT_DATA,
+    ...data,
+    moments: {
+      ...DEFAULT_DATA.moments,
+      ...data.moments,
+      slides: data.moments?.slides ?? DEFAULT_DATA.moments.slides,
+    },
+  }
 }
 
 function mergeVersions(versions: Partial<CmsVersions>): CmsVersions {

@@ -59,7 +59,7 @@ Landing page educativa para el **Taller Municipal de Robótica** (programa de la
 ### Sitio público
 
 - Hero dinámico: título con resaltado y acento editables, botones e imagen opcional.
-- Secciones: Aprender, Proceso, Galería con lightbox, Proyectos, Robots de los niños, Institucional con aliados, FAQ, Inscripción y Footer.
+- Secciones: Aprender, Proceso, Momentos, Galería con lightbox, Proyectos, Robots de los niños, Institucional con aliados, FAQ, Inscripción y Footer.
 - Datos de contacto (teléfono, WhatsApp, dirección, correo) y anuncios emergentes editables.
 - La galería usa degradados con etiqueta cuando todavía no hay fotografía real.
 - Responsive, accesible y con soporte de `prefers-reduced-motion`.
@@ -70,7 +70,7 @@ Landing page educativa para el **Taller Municipal de Robótica** (programa de la
 - Acceso en `#admin` o con doble clic en el logo del Navbar/Footer.
 - Login real contra la base de datos con sesión `HttpOnly`, `SameSite=Strict` y token CSRF.
 - Dashboard con métricas reales, accesos rápidos y auditoría de actividad.
-- Editores: Inicio/Hero, Introducción, Aprender, Proceso, Galería, Anuncios, Proyectos, Robots, Institucional, FAQ y Configuración.
+- Editores: Inicio/Hero, Introducción, Aprender, Proceso, Momentos, Galería, Anuncios, Proyectos, Robots, Institucional, FAQ y Configuración. El editor de Momentos administra sus textos; Galería administra sus imágenes.
 - Subida de imágenes a `uploads/` con validación de tipo, tamaño y dimensiones. No se guardan base64 en la base de datos.
 - **Guardado versionado por sección**: si otra persona guardó antes, la API responde `409` y el editor permite recargar la versión actual.
 - Exportar/importar el contenido completo en JSON y restaurar los valores iniciales.
@@ -167,7 +167,7 @@ El guardado usa control de concurrencia optimista: el cuerpo es `{"content": {..
 - `audit_log`: acciones con usuario, IP y metadatos.
 - `login_attempts`: intentos fallidos para el rate limiting.
 
-Las secciones válidas son: `settings`, `hero`, `intro`, `journey`, `learningCards`, `gallery`, `projects`, `kidsRobots`, `institutional`, `faqs`, `contact` y `announcements`. El backend valida y normaliza cada una antes de guardar; el frontend comparte los valores iniciales mediante `backend/content/default-content.json`.
+Las secciones válidas son: `settings`, `hero`, `intro`, `journey`, `learningCards`, `gallery`, `moments`, `projects`, `kidsRobots`, `institutional`, `faqs`, `contact` y `announcements`. El backend valida y normaliza cada una antes de guardar; el frontend comparte los valores iniciales mediante `backend/content/default-content.json`.
 
 ## Seguridad
 
