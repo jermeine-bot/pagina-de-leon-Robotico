@@ -5,12 +5,10 @@ import { useCms } from '@/cms/CmsContext'
 export function InstitutionalSection() {
   const { data } = useCms() as { data: any }
 
-  // Rutas directas desde la carpeta public en la raíz
+  // Rutas directas desde la carpeta public en la raíz (limitado por defecto a 2)
   const partners = data?.partners || [
     { name: 'Alcaldía Municipal', logo: '/leon2d.png' },
-    { name: 'Ministerio de Educación', logo: '/mined.png' },
-    { name: 'Instituto de Tecnología', logo: '/unan.png' },
-    { name: 'Fundación Aliada', logo: '/leoncito.jpg' },
+    { name: 'Fundación Aliada', logo: '/Logo.jpg' },
   ]
 
   return (
@@ -95,31 +93,31 @@ export function InstitutionalSection() {
           </motion.div>
         </div>
 
-        {/* --- Sección de las 4 Instituciones de Apoyo --- */}
+        {/* --- Sección de las 2 Instituciones de Apoyo (Grandes) --- */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="rounded-3xl border border-brand-deep/5 bg-white/60 p-8 backdrop-blur-sm shadow-soft"
+          className="rounded-3xl border border-brand-deep/5 bg-white/60 p-8 sm:p-10 backdrop-blur-sm shadow-soft"
         >
-          <p className="text-center text-sm font-semibold uppercase tracking-wider text-brand-deep/50 mb-6">
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-brand-deep/50 mb-8">
             Instituciones que hacen posible este proyecto
           </p>
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4 items-center justify-items-center">
-            {partners.slice(0, 4).map((partner: any, index: number) => (
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 items-center justify-items-center">
+            {partners.slice(0, 2).map((partner: any, index: number) => (
               <div
                 key={index}
-                className="flex h-24 w-full items-center justify-center rounded-2xl border border-brand-deep/5 bg-white p-4 transition-transform hover:scale-105 shadow-sm"
+                className="flex h-36 sm:h-44 w-full items-center justify-center rounded-2xl border border-brand-deep/5 bg-white p-6 transition-transform hover:scale-105 shadow-sm"
               >
                 {partner.logo ? (
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="max-h-12 max-w-full object-contain transition-all"
+                    className="max-h-28 sm:max-h-32 max-w-full object-contain transition-all"
                   />
                 ) : (
-                  <span className="text-xs font-semibold text-brand-deep/60 text-center">{partner.name}</span>
+                  <span className="text-base font-semibold text-brand-deep/60 text-center">{partner.name}</span>
                 )}
               </div>
             ))}

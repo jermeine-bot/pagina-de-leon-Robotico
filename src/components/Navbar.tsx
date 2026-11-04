@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useCms } from '@/cms/CmsContext'
-import { Logo } from './Logo'
 
 const links = [
   { href: '#aprender', label: 'Aprender' },
@@ -14,7 +13,7 @@ const links = [
 ]
 
 export function Navbar() {
-  const { data } = useCms()
+  const { data } = useCms() as { data: any }
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -34,11 +33,15 @@ export function Navbar() {
         <a
           href="#hero"
           onDoubleClick={() => { window.location.hash = '#admin' }}
-          className="flex items-center gap-2 font-display font-bold text-brand-deep cursor-pointer"
+          className="flex items-center gap-2.5 font-display font-bold text-brand-deep cursor-pointer"
           title="Doble clic para administrar"
         >
-          <Logo size={36} />
-          <span className="hidden sm:inline">{data.programName}</span>
+          <img 
+            src="/Logo.jpg" 
+            alt="Logo" 
+            className="h-11 w-11 rounded-xl object-cover border border-brand-deep/10 shadow-sm" 
+          />
+          <span className="hidden sm:inline">{data?.programName}</span>
         </a>
 
         <ul className="hidden items-center gap-6 md:flex">
@@ -54,11 +57,11 @@ export function Navbar() {
         {/* Solicitar información button removed per request */}
 
         <button
-          className="md:hidden"
+          className="md:hidden p-2 text-brand-deep"
           onClick={() => setOpen((v) => !v)}
           aria-label="Menú"
         >
-          {open ? <X /> : <Menu />}
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
 
@@ -68,9 +71,9 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden"
+            className="md:hidden overflow-hidden bg-brand-warm/95 backdrop-blur-md border-b border-brand-deep/5 shadow-soft"
           >
-            <ul className="container-x flex flex-col gap-2 pb-4">
+            <ul className="container-x flex flex-col gap-2 py-4">
               {links.map((l, i) => (
                 <motion.li
                   key={l.href}
@@ -81,7 +84,7 @@ export function Navbar() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-xl px-3 py-2 text-sm font-medium text-brand-deep/80 hover:bg-brand-gray"
+                    className="block rounded-xl px-4 py-2.5 text-sm font-medium text-brand-deep/80 hover:bg-brand-gray transition"
                   >
                     {l.label}
                   </a>
